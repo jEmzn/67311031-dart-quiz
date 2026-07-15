@@ -27,8 +27,8 @@ void main() {
   print("---");
 
   // 1.4
-  print("ยอดสุทธิ (ไม่มีส่วนลด): ${cacTotal(price: 50, qty: 3)}");
-  print("ยอดสุทธิ (ส่วนลด 10 บาท): ${cacTotal(price: 100, qty: 2, discount: 10)}");
+  print("ยอดสุทธิ (ไม่มีส่วนลด): ${cacTotal(price: 55, qty: 2)}");
+  print("ยอดสุทธิ (ส่วนลด 10 บาท): ${cacTotal(price: 55, qty: 2, discount: 10)}");
   print("---");
   
   // 1.5
