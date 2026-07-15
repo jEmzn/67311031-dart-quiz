@@ -1,9 +1,14 @@
-
+enum OrderStatus {
+  pending, paid, cancelled
+}
 
 abstract class MenuItem {
   final String name;
   final double basePrice;
-  MenuItem(this.name, this.basePrice);
+  static int itemCount = 0;
+  MenuItem(this.name, this.basePrice) {
+    itemCount++;
+  }
 
   double price();
 
@@ -80,6 +85,17 @@ class Wallet {
   }
 }
 
+String getOrderStatus(OrderStatus s) {
+  switch(s) {
+    case OrderStatus.paid:
+      return "ชำระเงินแล้ว";
+    case OrderStatus.pending:
+      return "รอชำระเงิน";
+    case OrderStatus.cancelled:
+      return "ยกเลิกคำสั่งซื้อ";
+  }
+}
+
 void main() {
   List<MenuItem> order = [Drink('ชาเขียว', 15, 2), Food('ข้าวกะเพราะหมูสับ', 60, "L"), Food('ข้าวไข่เจียว', 40, "S")];
   double totalPrice = 0.0;
@@ -95,5 +111,9 @@ void main() {
   wallet.pay(10);
   wallet.pay(200);
   print("ยอดเงินคงเหลือ : ${wallet.balance}");
+
+  print("----");
+
+  print("จำนวนรายการเมนูที่ถูกสร้าง: ${MenuItem.itemCount}");
 }
 
